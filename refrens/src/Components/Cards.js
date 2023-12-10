@@ -101,13 +101,13 @@ export default function Cards(props) {
                             Filter
                         </button>
 
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <ul className="dropdown-menu">
                             {Object.keys(categories ?? {}).map(cat => {
                                 return <li className='dropstart'>
-                                    <button className="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" href="#" onClick={(e) => { e.stopPropagation() }}>{cat.toUpperCase()}</button>
+                                    <button className="dropdown-item dropdown-toggle" data-bs-toggle="dropdown"  onClick={(e) => { e.stopPropagation() }}>{cat.toUpperCase()}</button>
                                     <ul className='dropdown-menu'>
                                         {categories[cat].map(i => {
-                                            return <li onClick={() => { setFilterApplied({ filterBy: cat, value: i }) }}>
+                                            return <li onClick={(e) => { setFilterApplied({ filterBy: cat, value: i });e.preventDefault() }}>
                                                 <button className="dropdown-item">{i}</button>
                                             </li>
                                         }
